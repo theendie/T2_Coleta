@@ -24,6 +24,7 @@ class Medalhas(Resource):
         if item_id in data:
             return {'message': 'Item already exists'}, 400
         data[item_id] = request.json.get('value')
+        
         return {item_id: data[item_id]}, 201
 
     def put(self, item_id):
