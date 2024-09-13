@@ -14,9 +14,13 @@ class Medals(Resource):
     #  http://127.0.0.1:5000/medals/{country_name}
     def get(self, country_name=None):
         if country_name:
+            # Filtra o DataFrame para retornar as medalhas do país que contenha a string passada
             dataset_country = self.df[self.df['country'].str.contains(country_name, case=False, na=False)]
+            # Verifica se o DataFrame não está vazio
             if not dataset_country.empty:
+                # Retorna as medalhas do país
                 return jsonify(dataset_country.to_dict(orient='records'))
+            # Retorna uma mensagem de erro caso o país não seja encontrado
             return {'message': 'Country not found'}, 400
         return {'message': 'Country not found'}, 400
 
