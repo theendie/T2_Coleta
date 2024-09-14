@@ -69,3 +69,16 @@ class Medals():
             self.df.to_csv("dataset/medals.csv", index=False, encoding='utf-8')
             return True
         return False
+    
+    def delete_medal(self, medal_code):
+        # Filtra o DataFrame para retornar a medalha com o código passado
+        medal = self.df[self.df['code'] == medal_code]
+
+        # Verifica se a medalha não está vazia
+        if medal is not None and not medal.empty:
+            # Remove a medalha do DataFrame
+            self.df = self.df[self.df['code'] != medal_code]
+            # Salva o DataFrame atualizado no arquivo CSV
+            self.df.to_csv("dataset/medals.csv", index=False, encoding='utf-8')
+            return True
+        return False

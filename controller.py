@@ -39,6 +39,9 @@ def update_medal():
     medal_code = request.args.get('code')
     print('Updating medal, medal code ', medal_code)
 
+    if medal_code is None:
+        return {'message': 'Missing required parameter: code'}, 400
+
     medal_body = request.json
 
     updated_successfully = medals.update_medal(medal_code, medal_body)
@@ -48,14 +51,20 @@ def update_medal():
     return {'message': 'Medal not found'}, 404
 
 # http://127.0.0.1/medal?code={medal_code}
-@app.route('/medal/<string:code>', methods=['DELETE'])
-def delete_medal(item_id):
-    if item_id in data:
-        del data[item_id]
-        return {'message': 'Item deleted'}, 200
-    return {'message': 'Item not found'}, 404
+@app.route('/medal', methods=['DELETE'])
+def delete_medal():
+    medal_code = request.args.get('code')
 
-#api.add_resource(Medals, '/medals', '/medals/', '/medals/<string:country_name>', '/medals/<string:code>')
+    print('Deleting medal, medal code ', medal_code)
+
+    if medal_code is None:
+        return {'message': 'Missing required parameter: code'}, 400
+    
+    deleted_successfully = medals.delete_medal(medal_code)
+    
+    if deleted_successfully is True:
+        return {'message': 'Medal deleted'}, 200
+    return {'message': 'Medal not found'}, 404
 
 if __name__ == '__main__':
     app.run(debug=True)
