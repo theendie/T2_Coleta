@@ -23,8 +23,6 @@ packaging==24.1
 pandas==2.2.2
 pillow==10.3.0
 pygame==2.5.2
-PyOpenGL @ file:///C:/Users/Vitoria%20Gonzalez/Downloads/Instalacao_Python/Instalacao_Python/PyOpenGL-3.1.5-cp39-cp39-win_amd64.whl
-PyOpenGL-accelerate @ file:///C:/Users/Vitoria%20Gonzalez/Downloads/Instalacao_Python/Instalacao_Python/PyOpenGL_accelerate-3.1.5-cp39-cp39-win_amd64.whl
 pyparsing==3.1.2
 python-dateutil==2.9.0.post0
 pytz==2024.1
