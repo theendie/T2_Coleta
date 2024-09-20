@@ -22,10 +22,10 @@ def home():
     return jsonify({
         "message": "Bem-vindo à API de Medalhas!",
         "endpoints": {
-            "GET /medal/<country_name>": "Obtém as medalhas de um determinado país.",
+            "GET /medal/country_name": "Obtém as medalhas de um determinado país.",
             "POST /medal": "Adiciona uma nova medalha. Enviar um JSON no corpo da requisição.",
-            "PUT /medal?code=<medal_code>": "Atualiza uma medalha existente com o código fornecido.",
-            "DELETE /medal?code=<medal_code>": "Exclui uma medalha com o código fornecido."
+            "PUT /medal?code=medal_code": "Atualiza uma medalha existente com o código fornecido.",
+            "DELETE /medal?code=medal_code": "Exclui uma medalha com o código fornecido."
         },
         "instructions": "Para usar a API, substitua <country_name> pelo nome do país e <medal_code> pelo código da medalha."
     }), 200
