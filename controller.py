@@ -8,10 +8,18 @@ from medals import Medals
 app = Flask(__name__)
 api = Api(app)
 
-# Carrega o arquivo CSV
-df = pd.read_csv("dataset/medals.csv", encoding='utf-8', keep_default_na=False)
+# Definir o caminho dinâmico para o arquivo CSV
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+csv_file = os.path.join(BASE_DIR, 'dataset/medals.csv')
+df = pd.read_csv(csv_file, encoding='utf-8', keep_default_na=False)
+
 # Inicializa a classe Medals
 medals = Medals()
+
+# Rota inicial
+@app.route('/')
+def home():
+    return jsonify({'message': 'Bem-vindo à API de medalhas!'}), 200
 
 # http://127.0.0.1:5000/medals/{country_name}
 @app.route('/medal/<string:country_name>', methods=['GET'])
